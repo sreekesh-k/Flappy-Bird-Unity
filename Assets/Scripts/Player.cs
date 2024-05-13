@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public Sprite[] sprites;
     private int spriteIndex;
 
+ 
     private void Awake()
     {
 
@@ -19,6 +20,13 @@ public class Player : MonoBehaviour
     {
         InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f);
         
+    }
+    private void OnEnable()
+    {
+       Vector3 position = transform.position;
+        position.y = 0f;
+        transform.position = position;
+        direction = Vector3.zero;
     }
     private void Update()
     {

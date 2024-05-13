@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public Player player;
     public Text scoreText;
+    public Text start;
     public GameObject playButton;
     public GameObject gameover;
     public int score;
@@ -12,7 +13,10 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        pause();
+        Time.timeScale = 0f;
+        player.enabled = false;
+        gameover.SetActive(false);
+
     }
     public void play()
     {
@@ -20,6 +24,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
         playButton.SetActive(false);
         gameover.SetActive(false);
+        start.gameObject.SetActive(false);
         Time.timeScale = 1f;
         player.enabled = true;
 
