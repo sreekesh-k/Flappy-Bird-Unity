@@ -38,4 +38,17 @@ public class Player : MonoBehaviour
         }
         spriteRenderer.sprite = sprites[spriteIndex]; 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            FindAnyObjectByType<GameManager>().GameOver();
+
+        }
+        else if (collision.gameObject.tag == "Score")
+        {
+            FindAnyObjectByType<GameManager>().IncreaseScore();
+        }
+    }
 }
